@@ -1,0 +1,46 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id             String        @id @default(cuid())
+  email          String        @unique
+  name           String?
+  passwordHash   String?
+  listings       Listing[]
+  isPremium      Boolean       @default(false)
+  stripeCustomer String? // for later Stripe integration
+  createdAt      DateTime      @default(now())
+  subscription   Subscription?
+}
+
+model Listing {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  rent        Int
+  address     String
+  latitude    Float
+  longitude   Float
+  halal       Boolean   @default(true)
+  moveInDate  DateTime?
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String
+  createdAt   DateTime  @default(now())
+}
+
+model Subscription {
+  id            String   @id @default(cuid())
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String   @unique
+  stripePriceId String // your Stripe price identifier
+  status        String // active, canceled, etc.
+  startedAt     DateTime @default(now())
+}
