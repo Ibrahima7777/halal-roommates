@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import ListingCard from "../../components/ListingCard";
 import mockListings from "../../data/mock-listings.json";
 
@@ -15,7 +16,7 @@ export default function Home() {
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-gray-700 hover:text-emerald-600 transition-colors">Features</a>
               <a href="#listings" className="text-gray-700 hover:text-emerald-600 transition-colors">Listings</a>
-              <a href="/api/auth/signin" className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">Sign In</a>
+              <Link href="/api/auth/signin" className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">Sign In</Link>
             </div>
           </div>
         </div>
@@ -35,12 +36,12 @@ export default function Home() {
               with shared values and lifestyle preferences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
+              <Link 
                 href="/api/auth/signin" 
                 className="bg-emerald-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-colors shadow-lg hover:shadow-xl"
               >
                 Get Started
-              </a>
+              </Link>
               <a 
                 href="#listings" 
                 className="border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-emerald-600 hover:text-white transition-colors"
@@ -142,12 +143,12 @@ export default function Home() {
           </div>
           
           <div className="text-center mt-12">
-            <a 
+            <Link 
               href="/api/auth/signin" 
               className="bg-emerald-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-colors shadow-lg hover:shadow-xl"
             >
               View All Listings
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -161,12 +162,12 @@ export default function Home() {
           <p className="text-xl text-emerald-100 mb-8">
             Join thousands of Muslims who have found their ideal living situation through HalalRoommates.
           </p>
-          <a 
+          <Link 
             href="/api/auth/signin" 
             className="bg-white text-emerald-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl"
           >
             Create Your Profile
-          </a>
+          </Link>
         </div>
       </section>
 
